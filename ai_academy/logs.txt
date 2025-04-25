@@ -1,0 +1,5 @@
+[2025-04-03T14:08:59.303Z] GET /api/courses
+[2025-04-03T14:09:48.114Z] GET /api/courses?search=learning
+[2025-04-03T14:13:49.791Z] GET /courses
+[2025-04-03T14:13:49.947Z] GET /favicon.ico
+[2025-04-03T14:14:02.856Z] GET /courses

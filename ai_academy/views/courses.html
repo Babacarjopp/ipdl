@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cours - AI Academy</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <img src="/images/ai.png" alt="AI Academy Logo" width="100">
+        <h1>Nos Cours</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/about">À propos</a></li>
+                <li><a href="/courses">Cours</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+
+    
+          
+    </header>
+
+    <main>
+        <section>
+            <h2>Découvrez nos formations</h2>
+            <ul>
+                <li><strong>Introduction à l'IA</strong> - 4 semaines (Débutant)</li>
+                <li><strong>Machine Learning</strong> - 8 semaines (Intermédiaire)</li>
+                <li><strong>Deep Learning</strong> - 10 semaines (Avancé)</li>
+                <li><strong>NLP avec TensorFlow</strong> - 6 semaines (Avancé)</li>
+            </ul>
+        </section>
+    </main>
+
+   
+
+    <h2>Nos cours</h2>
+    <form action="/search" method="get">
+        <input type="text" name="query" placeholder="Rechercher un cours par titre" required>
+        <button type="submit">Rechercher</button>
+      </form>
+    <div id="results"></div>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const query = urlParams.get('query');
+      const resultsDiv = document.getElementById('results');
+    
+      if (query) {
+        fetch('/data/courses.json') // Assure-toi que le fichier est bien accessible à cette adresse
+          .then(response => response.json())
+          .then(courses => {
+            const filtered = courses.filter(course =>
+              course.title.toLowerCase().includes(query.toLowerCase())
+            );
+    
+            if (filtered.length > 0) {
+              filtered.forEach(course => {
+                const courseElement = document.createElement('div');
+                courseElement.innerHTML = `<h3>${course.title}</h3><p>${course.description}</p>`;
+                resultsDiv.appendChild(courseElement);
+              });
+            } else {
+              resultsDiv.innerHTML = "<p>Aucun cours trouvé.</p>";
+            }
+          })
+          .catch(err => {
+            resultsDiv.innerHTML = "<p>Erreur lors du chargement des cours.</p>";
+            console.error("Erreur fetch :", err);
+          });
+      }
+    </script>
+    
+        
+
+
+
+
+
+
+
+
+
+
+    <footer>
+        <p>&copy; 2025 AI Academy. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
