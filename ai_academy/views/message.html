@@ -1,0 +1,32 @@
+<!-- views/messages.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Messages reçus</h1>
+    <div id="messages-container"></div>
+
+    <script>
+        fetch('/api/messages')
+            .then(response => response.json())
+            .then(messages => {
+                const container = document.getElementById('messages-container');
+                messages.forEach(message => {
+                    const messageElement = document.createElement('div');
+                    messageElement.innerHTML = `
+                        <strong>${message.name} (${message.email})</strong><br>
+                        <p>${message.message}</p>
+                        <small>${new Date(message.date).toLocaleString()}</small>
+                        <hr>
+                    `;
+                    container.appendChild(messageElement);
+                });
+            });
+    </script>
+</body>
+</html>

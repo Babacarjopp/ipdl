@@ -1,0 +1,26 @@
+[
+{
+   "id": 1,
+   "title": "Introduction à l'IA",
+   "description": "Découvrez les fondamentaux de l'intelligence artificielle."
+   
+  },
+  {
+   "id": 2,
+   "title": "Machine Learning",
+   "description": "Apprenez les principes du machine learning et comment construire des modèles prédictifs."
+  
+  },
+  {
+    "id": 3,
+   "title": "Deep Learning",
+    "description": "Explorez les réseaux de neurones profonds et leurs applications."
+   
+  },
+  {
+    "id": 4,
+   "title": "NLP avec TensorFlow",
+    "description": "Apprenez à créer des applications de traitement du langage naturel."
+    
+  }
+]
