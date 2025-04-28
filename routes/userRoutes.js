@@ -18,11 +18,12 @@ router.post("/forgot-password", authController.requestPasswordReset);
 router.get("/reset-password/:token", authController.resetPasswordForm);
 router.post("/reset-password/:token", authController.resetPassword);
 
+
+router.get("/", usersController.index, usersController.indexView);
 // Middleware de protection des routes
 router.use(authController.ensureLoggedIn);
 
 // Routes CRUD utilisateurs (protégées par l'auth)
-router.get("/", usersController.index, usersController.indexView);
 router.get("/api-token", usersController.getApiToken); 
 router.get("/new", usersController.new);
 router.post("/create", usersController.create, usersController.redirectView);
